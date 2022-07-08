@@ -1,9 +1,10 @@
-import "./App.css";
-import Books from "./components/Books";
-import Categories from "./components/Categories";
-import Navbar from "./components/Navbar";
-import { useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+/* eslint-disable no-unused-vars */
+import './App.css';
+import { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Books from './components/Books';
+import Categories from './components/Categories';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
@@ -13,7 +14,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Books />} />
           <Route path="/categories" element={<Categories />} />
-          {/* <Books books={books} /> */}
         </Routes>
       </div>
     </Router>
