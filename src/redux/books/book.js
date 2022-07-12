@@ -33,32 +33,35 @@
 
 // export default bookSlice.reducer;
 
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
+
 const initialState = [
   {
-    title: "The Hunger Games",
-    author: "Suzanne Collins",
-    category: "Action",
-    chapter: "Chapter 17",
+    title: 'The Hunger Games',
+    author: 'Suzanne Collins',
+    category: 'Action',
+    chapter: 'Chapter 17',
   },
   {
-    title: "Dune",
-    author: "Frank Herbert",
-    category: "Science Fiction",
+    title: 'Dune',
+    author: 'Frank Herbert',
+    category: 'Science Fiction',
     chapter: 'Chapter 3: "A Lesson Learned"',
   },
   {
-    title: "Capital in the Twenty-First Century",
-    author: "Suzanne Collins",
-    category: "Economy",
-    chapter: "Introduction",
+    title: 'Capital in the Twenty-First Century',
+    author: 'Suzanne Collins',
+    category: 'Economy',
+    chapter: 'Introduction',
   },
 ];
 
 const bookSlice = createSlice({
-  name: "books",
+  name: 'books',
   initialState,
-  reducers: {},
+  reducer: {},
 });
+
+export const selectAllBooks = (state) => state.books;
 
 export default bookSlice.reducer;
