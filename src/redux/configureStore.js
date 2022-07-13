@@ -1,6 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
-// import thunk from 'redux-thunk';
 import BookReducer from './books/book';
 import CategoryReducer from './categories/categories';
 
