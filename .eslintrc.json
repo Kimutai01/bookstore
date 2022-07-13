@@ -18,10 +18,7 @@
     "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
     "react/react-in-jsx-scope": "off",
     "import/no-unresolved": "off",
-    "no-shadow": "off",
-    "import/prefer-default-export": false,
-    "import/no-default-export": false
-
+    "no-shadow": "off"
     
   },
   "ignorePatterns": [
