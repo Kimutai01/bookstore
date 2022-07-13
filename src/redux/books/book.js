@@ -1,24 +1,23 @@
+import { nanoid } from '@reduxjs/toolkit';
 
-import { nanoid } from "@reduxjs/toolkit";
-
-const ADD_BOOK = "./books/ADD_BOOK";
-const REMOVE_BOOK = "./books/REMOVE_BOOK";
+const ADD_BOOK = './books/ADD_BOOK';
+const REMOVE_BOOK = './books/REMOVE_BOOK';
 
 const initialState = [
   {
     id: 1,
-    title: "The Hunger Games",
-    author: "Suzanne Collins",
+    title: 'The Hunger Games',
+    author: 'Suzanne Collins',
   },
   {
     id: 2,
-    title: "Dune",
-    author: "Frank Herbert",
+    title: 'Dune',
+    author: 'Frank Herbert',
   },
   {
     id: 3,
-    title: "Capital in the Twenty-First Century",
-    author: "Suzanne Collins",
+    title: 'Capital in the Twenty-First Century',
+    author: 'Suzanne Collins',
   },
 ];
 
