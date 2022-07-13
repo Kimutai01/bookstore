@@ -1,46 +1,28 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/jsx-key */
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import AddBook from './AddBook';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Book from './Book';
-import { selectAllBooks } from '../redux/books/book';
+import AddBook from './AddBook';
 
-const Books = () => {
-  // const [books, setBooks] = useState([
-  //   {
-  //     title: 'The Hunger Games',
-  //     author: 'Suzanne Collins',
-  //     category: 'Action',
-  //     chapter: 'Chapter 17',
-  //   },
-  //   {
-  //     title: 'Dune',
-  //     author: 'Frank Herbert',
-  //     category: 'Science Fiction',
-  //     chapter: 'Chapter 3: "A Lesson Learned"',
-  //   },
-  //   {
-  //     title: 'Capital in the Twenty-First Century',
-  //     author: 'Suzanne Collins',
-  //     category: 'Economy',
-  //     chapter: 'Introduction',
-  //   },
-  // ]);
-  const books = useSelector(selectAllBooks);
-  return (
-    <div>
+const Books = ({ books }) => (
+  <>
+    <ul className="book-content">
       {books.map((book) => (
-        <Book
-          title={book.title}
-          author={book.author}
-          category={book.category}
-          chapter={book.chapter}
-        />
+        <Book key={book.id} book={book} />
       ))}
-      <AddBook />
-    </div>
-  );
+    </ul>
+    <AddBook />
+  </>
+);
+
+Books.propTypes = {
+  books: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      title: PropTypes.string,
+      author: PropTypes.string,
+      category: PropTypes.string,
+    }).isRequired,
+  ).isRequired,
 };
 
 export default Books;

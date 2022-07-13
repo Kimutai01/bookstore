@@ -1,10 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import bookReducer from './books/book';
+import { combineReducers } from 'redux';
+// import thunk from 'redux-thunk';
+import BookReducer from './books/book';
+import CategoryReducer from './categories/categories';
 
-const store = configureStore({
-  reducer: {
-    books: bookReducer,
-  },
+const rootReducer = combineReducers({
+  BookReducer,
+  CategoryReducer,
 });
 
+const store = configureStore({ reducer: rootReducer });
 export default store;

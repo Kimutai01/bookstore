@@ -1,23 +1,23 @@
-/* eslint-disable no-unused-vars */
-import './App.css';
-import { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Books from './components/Books';
-import Categories from './components/Categories';
+import Category from './components/Categories';
 import Navbar from './components/Navbar';
 
-function App() {
+const BookContainer = () => {
+  const books = useSelector((state) => state.BookReducer);
   return (
     <Router>
-      <div>
+      <div className="div">
         <Navbar />
         <Routes>
-          <Route path="/" element={<Books />} />
-          <Route path="/categories" element={<Categories />} />
+          <Route path="/" exact element={<Books books={books} />} />
+          <Route path="/categories" element={<Category />} />
         </Routes>
       </div>
     </Router>
   );
-}
+};
 
-export default App;
+export default BookContainer;

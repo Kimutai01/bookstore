@@ -1,18 +1,58 @@
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { nanoid } from '@reduxjs/toolkit';
+import { addBook } from '../redux/books/book';
 
+const AddBook = () => {
+  const dispatch = useDispatch();
+  const [book, setBook] = useState({
+    title: '',
+    author: '',
+    id: nanoid(),
+  });
+  const handleChange = (e) => {
+    const inputs = e.target.name;
+    if (inputs === 'title') {
+      setBook({ title: e.target.value, author: book.author });
+    }
+    if (inputs === 'author') {
+      setBook({ title: book.title, author: e.target.value });
+    }
+  };
 
-const AddBook = () => (
-  <div>
-    <div className="Add-form">
-      <h2 className="form-title">ADD NEW BOOK</h2>
-      <form className="add-book-form">
-        <input type="text" placeholder="Book title" required />
-        <input type="text" placeholder="Author" required />
-        <button type="submit" className="submit-button">
-          Add book
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(addBook(book));
+  };
+
+  return (
+    <div className="inputContainer">
+      <h2 className="FormText">ADD NEW BOOK</h2>
+      <form>
+        <input
+          type="text"
+          name="title"
+          className="inputTitle"
+          onChange={handleChange}
+          placeholder="Book Title"
+          id="input0"
+          required
+        />
+        <input
+          type="text"
+          name="author"
+          className="inputAuthor"
+          onChange={handleChange}
+          placeholder="Book Author"
+          id="input1"
+          required
+        />
+        <button type="submit" className="FormBtn" onClick={handleSubmit}>
+          Add Book
         </button>
       </form>
     </div>
-  </div>
-);
+  );
+};
 
 export default AddBook;
