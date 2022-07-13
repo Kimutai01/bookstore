@@ -1,12 +1,15 @@
-const CHECK_STATUS = './categories/CHECK_STATUS';
+const CHECK_STATUS = './Categories/CHECK_STATUS';
 
-const categorySlice = (state = [], action) => {
+const CategoryReducer = (state = [], action) => {
   switch (action.type) {
     case CHECK_STATUS:
-      return 'Under Construction';
+      return 'Under construction';
+
     default:
       return state;
   }
 };
 
-export default categorySlice;
+export const categories = () => ({ type: CHECK_STATUS });
+
+export default CategoryReducer;

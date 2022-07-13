@@ -1,34 +1,53 @@
-const initialState = [];
+import { nanoid } from '@reduxjs/toolkit';
+
 const ADD_BOOK = './books/ADD_BOOK';
 const REMOVE_BOOK = './books/REMOVE_BOOK';
 
-const bookSlice = (state = initialState, action) => {
+const initialState = [
+  {
+    id: 1,
+    title: 'The Hunger Games',
+    author: 'Suzanne Collins',
+  },
+  {
+    id: 2,
+    title: 'Dune',
+    author: 'Frank Herbert',
+  },
+  {
+    id: 3,
+    title: 'Capital in the Twenty-First Century',
+    author: 'Suzanne Collins',
+  },
+];
+
+const BookReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_BOOK: {
-      const newState = {
-        id: Math.floor(Math.random() * 1000),
-        title: action.book.title,
-        author: action.book.author,
-        category: action.book.category,
-      };
-      return [...state, newState];
+      const newState = [
+        {
+          id: nanoid(),
+          title: action.book.title,
+          author: action.book.author,
+        },
+      ];
+      return [...state, ...newState];
     }
+
     case REMOVE_BOOK: {
-      const remove = state.filter((book) => book[0] !== action.id);
+      const remove = state.filter((book) => book.id !== action.id);
       return remove;
     }
+
     default:
       return state;
   }
 };
-export const addBookFunc = (book) => ({
-  type: ADD_BOOK,
-  book,
-});
 
-export const removeBookFunc = (id) => ({
+export const addBook = (book) => ({ type: ADD_BOOK, book });
+
+export const removeBook = (id) => ({
   type: REMOVE_BOOK,
   id,
 });
-
-export default bookSlice.reducer;
+export default BookReducer;
