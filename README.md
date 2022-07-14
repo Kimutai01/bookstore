@@ -4,7 +4,7 @@ An application that shows books and the progress
 
 ## Live Demo
 
-![screenshot]()
+![screenshot](./bookstore.png)
 
 ## Built With
 
@@ -13,6 +13,7 @@ An application that shows books and the progress
   -Webpack
 
 ## Getting Started
+
 ```
 git clone https://github.com/Kimutai01/bookstore
 cd bookstore
