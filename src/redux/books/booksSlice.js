@@ -2,23 +2,27 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
 
 const baseURL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps';
-const appId = 'IGqCjYSRuuahNBqX1j4U';
+const appId = 'NPaJQ5MUTwORqOKnY4IJ';
 
 export const loadBooks = createAsyncThunk(
-  'bookstore/books/LOAD_BOOKS', async () => {
+  'bookstore/books/LOAD_BOOKS',
+  async () => {
     const response = await fetch(`${baseURL}/${appId}/books`);
     const books = await response.json();
-    const formatedBooksObject = [Object.keys(books).map((key) => ({
-      id: key,
-      ...books[key][0],
-    }))];
+    const formatedBooksObject = [
+      Object.keys(books).map((key) => ({
+        id: key,
+        ...books[key][0],
+      })),
+    ];
 
     return formatedBooksObject;
   },
 );
 
 export const addBook = createAsyncThunk(
-  'bookstore/books/ADD_BOOK', async ({ title, author, category }, thunkAPI) => {
+  'bookstore/books/ADD_BOOK',
+  async ({ title, author, category }, thunkAPI) => {
     const newBook = {
       item_id: uuidv4(),
       title,
@@ -38,7 +42,8 @@ export const addBook = createAsyncThunk(
 );
 
 export const deleteBook = createAsyncThunk(
-  'bookstore/books/DELETE_BOOK', async (bookId, thunkAPI) => {
+  'bookstore/books/DELETE_BOOK',
+  async (bookId, thunkAPI) => {
     await fetch(`${baseURL}/${appId}/books/${bookId}`, {
       method: 'DELETE',
     }).then(() => thunkAPI.dispatch(loadBooks()));
